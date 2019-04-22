@@ -226,7 +226,7 @@ def predict(image_path, model, device, cat_to_name, class_from_index,  topk=5, s
         print()
 
         for cat, pred in predictions:
-            print('  {}: {}%'.format(cat, round(pred.item(),2)))
+            print('  {}: {}%'.format(cat, round(pred.item(),2) * 100))
         print()
         if 'predict_img' in image_path:
             # Get true label
