@@ -20,6 +20,9 @@ To train a model you can use either Densenet or Resnet pre-trained models
 ```python train.py dataset --gpu --epochs 10 --arch densenet```
 ### Train with GPU for 40 epochs using resnet
 ```python train.py dataset --gpu --epochs 40 --arch resnet```
+### Model Checkpoints
+I've included a checkpoint of a model trained with resnet in case you want to start to play with it without having to train it first.
+There is a limitation of 100 MB per file on GitHub otherwise I could also include a checkpoint for Densenet, which in my opinion performs better at the moment.
 ### Inference
 To run a prediction or infere if an image is a ```Hotdog``` or a ```Not Hotdog``` I've included some images that are not part of the dataset used previously inside the folder ```predict_img```
 Inside that folder I created 2 subfolders, one for each class in order to get the true label printed out, but this is not necesarily a requirement.
