@@ -13,6 +13,7 @@ def main():
     checkpoint_file = '/checkpoint.pth'
     checkpoint_path = input_args.checkpoint + checkpoint_file
     top_k = input_args.top_k
+    show_p = input_args.show_probs
     number_of_classes = input_args.number_of_classes
     category_names_path = input_args.category_names
 
@@ -25,7 +26,7 @@ def main():
 
     model, class_from_index, arch = load_checkpoint(checkpoint_path, device, number_of_classes)
     model = freeze_layers(model, arch)
-    predict(image_path, model, device, category_names, class_from_index,  top_k)
+    predict(image_path, model, device, category_names, class_from_index,  top_k, show_probs = show_p)
 
 
 if __name__ == "__main__":

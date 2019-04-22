@@ -195,7 +195,7 @@ def process_image(image):
     return np_image
 
 
-def predict(image_path, model, device, cat_to_name, class_from_index,  topk=5):
+def predict(image_path, model, device, cat_to_name, class_from_index,  topk=5, show_probs = False):
     ''' Predict the class (or classes) of an image using a trained deep learning model.
     '''
     image = process_image(image_path)
@@ -215,24 +215,44 @@ def predict(image_path, model, device, cat_to_name, class_from_index,  topk=5):
 
     # Create labels with category names for the topK predictions
     categories = [cat_to_name[class_from_index[idx]] for idx in classes[0]]
-
-    # Get true label
-    true_idx = image_path.split('/')[1]
-    #cat_to_name[class_from_index]
-    true_label = cat_to_name[true_idx]
     print(sum(probs))
     predictions = zip(categories, probs.T)
 
-    print()
-    print('##############################')
-    print()
-    print('  TOP {} probabilities are:'.format(topk))
-    print()
+    if show_probs:
+        print()
+        print('##############################')
+        print()
+        print('  TOP {} probabilities are:'.format(topk))
+        print()
 
-    for cat, pred in predictions:
-        print('  {}: {}%'.format(cat, round(pred.item(),2)))
-    print()
-    print('  True label: {}'.format(true_label))
-    print()
-    print('##############################')
-    print()
+        for cat, pred in predictions:
+            print('  {}: {}%'.format(cat, round(pred.item(),2)))
+        print()
+        if 'predict_img' in image_path:
+            # Get true label
+            true_idx = image_path.split('/')[1]
+            # cat_to_name[class_from_index]
+            true_label = cat_to_name[true_idx]
+            print('  True label: {}'.format(true_label))
+            print()
+        print('##############################')
+        print()
+    else:
+        print()
+        print('##############################')
+        print()
+        print('  The image is most likely a:')
+        print()
+
+        for cat, pred in predictions:
+            print('  {}'.format(cat))
+            print()
+        if 'predict_img' in image_path:
+            # Get true label
+            true_idx = image_path.split('/')[1]
+            # cat_to_name[class_from_index]
+            true_label = cat_to_name[true_idx]
+            print('  True label: {}'.format(true_label))
+            print()
+        print('##############################')
+        print()

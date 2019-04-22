@@ -62,9 +62,10 @@ def get_predict_input_args():
     parser.add_argument('image_path')
     parser.add_argument('--number_of_classes', type = int, help = 'Number of classes to classify', default = 2)
     parser.add_argument('--checkpoint',  type=str, help='Path to checkpoints', default= 'checkpoints')
-    parser.add_argument('--top_k', type=int, help='Top K', default='2')
+    parser.add_argument('--top_k', type=int, help='Top K', default='1')
     parser.add_argument('--category_names', type=str , help='Category names', default= 'cat_to_name.json')        
-    parser.add_argument('--gpu',  help='Use GPU for training', action='store_true', default = False)    
-    
+    parser.add_argument('--gpu',  help='Use GPU for training', action='store_true', default = False)
+    parser.add_argument('--show_probs', help='Show Probabilities', action='store_true', default=False)
+
     return parser.parse_args()
 
