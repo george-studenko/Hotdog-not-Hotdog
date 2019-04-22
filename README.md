@@ -1,6 +1,8 @@
 # Hotdog not Hotdog image classifier
 This my implementation of the famous Hotdog not Hotdog classifier from the Silicon Valley tv show, here is a [1 minute clip](https://www.youtube.com/watch?v=pqTntG1RXSY) to refresh your memory.
 
+![Silicon Valley Hotdog Not Hotdog](assets/hotdog.png)
+
 ## How to run it
 ### Install requirements
 To install the requirements just run   
@@ -17,7 +19,9 @@ To train a model you can use either Densenet or Resnet pre-trained models
 * Set the number of epochs to train with the ```--epochs``` parameter
 * Set the pretrained network to use with the ```--arch``` parameter
 ### Train with GPU for 10 epochs using densenet
-```python train.py dataset --gpu --epochs 10 --arch densenet```
+```python train.py dataset --gpu --epochs 10 --arch densenet```  
+  
+![Train with GPU for 10 epochs using densenet output](assets/train-densenet.png)
 ### Train with GPU for 40 epochs using resnet
 ```python train.py dataset --gpu --epochs 40 --arch resnet```
 ### Model Checkpoints
@@ -35,8 +39,14 @@ With GPU and True Label
 ```python predict.py predict_img/1/h1.jpg --gpu```  
 
 Without GPU and without true label    
-```python predict.py test_img1.jpg```    
-```python predict.py test_img2.jpg```    
+```python predict.py test_img1.jpg```  
+  
+![Predict](assets/predict.png)
 
+```python predict.py test_img2.jpg --show_probs```  
+  
+  ![Predict](assets/show_probs.png)
+
+Please note that ```show_probs``` is at the moment working only for ```densenet```, the values for ```resnet``` won't be correct
 
 
