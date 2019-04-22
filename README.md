@@ -47,6 +47,14 @@ Without GPU and without true label
   
   ![Predict](assets/show_probs.png)
 
-Please note that ```show_probs``` is at the moment working only for ```densenet```, the values for ```resnet``` won't be correct
+Please note that ```show_probs``` is at the moment working only for ```densenet```, the values for ```resnet``` won't be correct.  
+
+Predict with top_k parameter  
+```python predict.py predict_img/1/h1.jpg --show_probs --top_k 2  --gpu```  
+  
+![Predict](assets/top_k.png)
+
+
+Top_k indicates that we want to get probabilities for the top k classes (since this is a binary classifier k max values is 2)
 
 
